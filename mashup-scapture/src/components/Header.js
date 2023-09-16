@@ -15,7 +15,7 @@ const HeaderContent = styled.div`
   align-items: center;
   gap: 40vw;
 
-  font-size: 1.8vw;
+  font-size: 1.2vw;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -25,7 +25,7 @@ const HeaderContent = styled.div`
 const Logo = styled.img`
   display: flex;
   align-items: center;
-  width: 19.5vmin;
+  width: 13.5vmin;
   flex-shrink: 0;
 `;
 
@@ -53,7 +53,7 @@ const Navigation = styled.nav`
 
 const ContentWrap = styled.div`
   margin-top: 13vh;
-  margin-left: 12vw;
+  margin-left: 18.4vw;
 `;
 
 const MainContent = styled.div`
@@ -63,7 +63,7 @@ const MainContent = styled.div`
   font-weight: 900;
   line-height: normal;
 
-  font-size: 10vw;
+  font-size: 8vw;
 `;
 
 const SubContent1 = styled.div`
@@ -71,10 +71,9 @@ const SubContent1 = styled.div`
 
   color: var(--1, #f2f6ff);
   font-family: Pretendard;
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-style: normal;
   font-weight: 600;
-  line-height: 1.8rem;
 `;
 
 const SubContent2 = styled.div`
@@ -82,10 +81,9 @@ const SubContent2 = styled.div`
 
   color: var(--1, #f2f6ff);
   font-family: Pretendard;
-  font-size: 1vw;
+  font-size: 0.8vw;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.2rem;
 `;
 
 function Header() {
