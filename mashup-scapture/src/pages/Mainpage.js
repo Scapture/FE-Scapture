@@ -1,17 +1,17 @@
 import React from "react";
 import Header from "../components/Header";
-import Frame from "../components/Template";
 import Cardsection from "../components/Cardsection";
 import Moverecording from "../components/Moverecording";
+import Template from "../components/Template";
 
 function Mainpage() {
   return (
     <>
-      <Frame>
+      <Template>
         <Header/>
         <Cardsection/>
         <Moverecording/>
-      </Frame>
+      </Template>
     </>
   );
 }
