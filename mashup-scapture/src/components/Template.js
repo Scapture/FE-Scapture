@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 const Background = styled.div`
   background: linear-gradient(180deg, #000 0%, rgba(23, 24, 26, 0.8) 55.14%);
-  height: 235.125rem;
+  height: auto;
 `;
 
 function Template({ children }) {

@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Cardsection from "../components/Cardsection";
 import Moverecording from "../components/Moverecording";
 import Template from "../components/Template";
+import MoveComunity from "../components/MoveCommunity";
+import Footer from "../components/Footer";
 
 function Mainpage() {
   return (
@@ -11,6 +13,8 @@ function Mainpage() {
         <Header/>
         <Cardsection/>
         <Moverecording/>
+        <MoveComunity/>
+        <Footer/>
       </Template>
     </>
   );

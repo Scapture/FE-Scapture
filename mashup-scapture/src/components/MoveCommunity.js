@@ -5,13 +5,15 @@ import Button from "./Button";
 
 const Container = styled.div`
   display: flex;
-  padding-bottom: 10vw;
-  background: #000;
+  padding-bottom: 15vw;
+  background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0) 350%);
   width: 100%;
+  border-bottom: 0.5px solid #959AA4;
 `;
 
 const ContentBlock = styled.div`
   margin-left: 18.4vw;
+  margin-right: 8vw;
 `;
 
 const Title = styled.div`
@@ -56,56 +58,70 @@ const AppBlock = styled.div`
 `;
 
 const ImgBlock = styled.div`
-  margin-top: 150px;
+  margin-top: 210px;
+  display: flex;
 `;
 
 const Backgroundimg = styled.img`
   display: flex;
-  position: relative;
-  width: 30vw;
+  width: 8vw;
+  height: 8vw;
+  margin-right: 15px;
+`;
+
+const Backgroundimg2 = styled.img`
+  display: flex;
+  width: 8vw;
+  height: 8vw;
+  margin-right: 15px;
+`;
+
+const Backgroundimg3 = styled.img`
+  display: flex;
+  width: 5vw;
   flex-shrink: 0;
-  margin-left: 16vw;
-  filter: brightness(150%);
-  border-radius: 0.2rem;
-  z-index: 0;
 `;
 
-const Backgroundsubimg = styled.img`
-  position: absolute;
-  width: 20vw;
-  margin-top: 9vw;
-  margin-left: 6rem;
-  filter: brightness(500%);
-  z-index: 1;
-  border-radius: 0.625rem;
-  border: 0.1px solid #fff;
+const Shareimgblock = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 8vw;
+  height: 8vw;
+  margin-right: 15px;
+  border-radius: 2vw;
+  background: var(--1, #F2F6FF);
 `;
 
-function Moverecording() {
+function MoveCommunity() {
   return (
     <Container>
       <ContentBlock>
-        <Title>RECORD</Title>
+        <Title>COMMUNITY</Title>
         <Titlecontent>
           지금 바로 당신의
           <br />
-          운동 영상을 녹화해보세요!
+          운동 영상을 공유해보세요!
         </Titlecontent>
         <Titleline />
         <Titlesubcontent>
           SCAPTURE가 당신의 운동을 알아서 녹화하고 편집해줍니다!
-          <br /> 당신만의 운동 영상을 녹화해보세요!
+          <br /> 당신만의 운동 영상을 공유해보세요!
         </Titlesubcontent>
         <AppBlock>
-          <Button>녹화하기</Button>
+          <Button>공유하기</Button>
         </AppBlock>
       </ContentBlock>
       <ImgBlock>
-        <Backgroundsubimg src="assets/recording-bg.png"></Backgroundsubimg>
-        <Backgroundimg src="assets/recording-bg.png" />
+        <Backgroundimg src="assets/YoTubeicon.svg" />
+        <Backgroundimg src="assets/Instaicon.svg" />
+        <Backgroundimg2 src="assets/tictok.png" />
+        <Shareimgblock>
+          <Backgroundimg3 src="assets/shareicon.png" />
+        </Shareimgblock>
       </ImgBlock>
     </Container>
   );
 }
 
-export default Moverecording;
+export default MoveCommunity;

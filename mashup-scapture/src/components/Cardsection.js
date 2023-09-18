@@ -15,7 +15,7 @@ const containerStyle = {
 const MainContainer = styled.div``;
 
 const MainContent = styled.div`
-  opacity: 0.9;
+  opacity: 0.8;
   background: linear-gradient(
     180deg,
     rgba(214, 223, 34, 0.8) -7.92%,
