@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
-import { useNavigate } from "react-router-dom";
-
-const ColoredText = styled.span`
-  color: #d6df22;
-`;
+import RecordingBtn from "./RecordingBtn";
 
 const Container = styled.div`
   display: flex;
@@ -85,13 +80,7 @@ const Backgroundsubimg = styled.img`
   border: 0.1px solid #fff;
 `;
 
-function Moverecording() {
-  const navigate = useNavigate();
- 
-  const navigateToRecording = () => {
-    navigate("/Recording");
-  };
-
+function Record() {
   return (
     <Container>
       <ContentBlock>
@@ -99,7 +88,7 @@ function Moverecording() {
         <Titlecontent>
           지금 바로 당신의
           <br />
-          운동 영상을 <ColoredText>녹화</ColoredText>해보세요!
+          운동 영상을 녹화해보세요!
         </Titlecontent>
         <Titleline />
         <Titlesubcontent>
@@ -107,7 +96,7 @@ function Moverecording() {
           <br /> 당신만의 운동 영상을 녹화해보세요!
         </Titlesubcontent>
         <AppBlock>
-          <Button to="/Recording" children="녹화하기"></Button>
+          <RecordingBtn />
         </AppBlock>
       </ContentBlock>
       <ImgBlock>
@@ -118,4 +107,4 @@ function Moverecording() {
   );
 }
 
-export default Moverecording;
+export default Record;

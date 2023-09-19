@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom"; // 라우팅을 위해 react-router-dom에서 Link 컴포넌트를 가져옴
 import Button from "./Button";
+
+const ColoredText = styled.span`
+  color: #2458EA;
+
+`;
 
 const Container = styled.div`
   display: flex;
@@ -101,7 +105,7 @@ function MoveCommunity() {
         <Titlecontent>
           지금 바로 당신의
           <br />
-          운동 영상을 공유해보세요!
+          운동 영상을 <ColoredText>공유</ColoredText>해보세요!
         </Titlecontent>
         <Titleline />
         <Titlesubcontent>

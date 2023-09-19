@@ -1,8 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom"; // 라우팅을 위해 react-router-dom에서 Link 컴포넌트를 가져옴
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // 스타일드 컴포넌트를 사용하여 Header 스타일링
+const NavLink = styled.div`
+  color: ${props => props.isHovered ? 'yellow' : '#eee'};
+  transition: color 0.8s;
+
+  &:hover {
+    color: yellow;
+    cursor: pointer;
+  }
+`;
+
+
+const ColoredText = styled.span`
+  color: #d6df22;
+`;
+
 const HeaderContainer = styled.div`
   color: white;
   padding-bottom: 13vmax;
@@ -36,12 +50,14 @@ const Navigation = styled.nav`
     margin: 0;
     display: flex;
     gap: 2vw;
+    padding-left: 10px;
 
     li {
       a {
         text-decoration: none;
         color: white;
         font-weight: bold;
+        font-family: Pretendard;
 
         &:hover {
           text-decoration: none;
@@ -86,7 +102,46 @@ const SubContent2 = styled.div`
   font-weight: 400;
 `;
 
-function Header({children}) {
+function Header({ children }) {
+  const [text, setText] = useState({
+    스캡쳐: "스캡쳐",
+    녹화: "녹화",
+    커뮤니티: "커뮤니티",
+  });
+
+  const [isHovered, setIsHovered] = useState({
+    스캡쳐: false,
+    녹화: false,
+    커뮤니티: false,
+  });
+
+  const handleMouseOver = (menu) => {
+    setIsHovered((prevState) => ({
+      ...prevState,
+      [menu]: true,
+    }));
+    setText((prevState) => ({
+      ...prevState,
+      [menu]:
+        menu === "스캡쳐"
+          ? "SCAPTURE"
+          : menu === "녹화"
+          ? "RECORD"
+          : "COMMUNITY",
+    }));
+  };
+
+  const handleMouseOut = (menu) => {
+    setIsHovered((prevState) => ({
+      ...prevState,
+      [menu]: false,
+    }));
+    setText((prevState) => ({
+      ...prevState,
+      [menu]: menu,
+    }));
+  };
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -94,26 +149,48 @@ function Header({children}) {
         <Navigation>
           <ul>
             <li>
-              <div to="/">스캡쳐</div>
+              <NavLink
+                className={`nav-link ${isHovered["스캡쳐"] ? "hovered" : ""}`}
+                to="/"
+                onMouseOver={() => handleMouseOver("스캡쳐")}
+                onMouseOut={() => handleMouseOut("스캡쳐")}
+              >
+                {text["스캡쳐"]}
+              </NavLink>
             </li>
             <li>
-              <div to="/about">녹화</div>
+              <NavLink
+                className={`nav-link ${isHovered["녹화"] ? "hovered" : ""}`}
+                to="/about"
+                onMouseOver={() => handleMouseOver("녹화")}
+                onMouseOut={() => handleMouseOut("녹화")}
+              >
+                {text["녹화"]}
+              </NavLink>
             </li>
             <li>
-              <div to="/contact">커뮤니티</div>
+              <NavLink
+                className={`nav-link ${isHovered["커뮤니티"] ? "hovered" : ""}`}
+                to="/contact"
+                onMouseOver={() => handleMouseOver("커뮤니티")}
+                onMouseOut={() => handleMouseOut("커뮤니티")}
+              >
+                {text["커뮤니티"]}
+              </NavLink>
             </li>
           </ul>
         </Navigation>
       </HeaderContent>
       <ContentWrap>
         <MainContent>
-        {children}<br/>
+          {children}
+          <br />
           SCAPTURE!
         </MainContent>
         <SubContent1>
           몸만 와서 운동만 하세요!
           <br />
-          촬영, 편집, 녹화 SCAPTURE가 해드릴게요!
+          <ColoredText>촬영, 편집, 녹화</ColoredText> SCAPTURE가 해드릴게요!
         </SubContent1>
         <SubContent2>
           SCAPTURE는 ‘SPORTS + CAPTURE’의 합성어로 운동하는 모습을 포착한다는

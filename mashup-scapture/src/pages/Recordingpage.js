@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "../components/Header";
-import Cardsection from "../components/Cardsection";
 import Moverecording from "../components/Moverecording";
 import Template from "../components/Template";
-import MoveComunity from "../components/MoveCommunity";
 import Footer from "../components/footer";
+import Record from "../components/Record";
+import VideoGridView from "../components/Videocomponent";
 
 
 function Recordingpage() {
@@ -12,7 +12,8 @@ function Recordingpage() {
     <>
       <Template>
         <Header children={"DO "}/>
-        <Moverecording/>
+        <Record/>
+        <VideoGridView/>
         <Footer/>
       </Template>
     </>
