@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import mqtt from "mqtt"; // MQTT 라이브러리 추가
+
 
 function RecordingBtn() {
   const StyledButton = styled.button`
@@ -38,11 +40,21 @@ function RecordingBtn() {
     }
   `;
 
+  
   const [isRecording, setIsRecording] = useState(false);
+  
+  // TODO: MQTT 브로커 URL을 설정합니다.
+  const mqttClient = mqtt.connect("mqtt://your-mqtt-broker-url"); // MQTT 브로커 연결
 
   const toggleRecording = () => {
     setIsRecording(!isRecording);
-    // 녹화 시작 또는 종료 로직을 여기에 추가
+
+    // TODO: MQTT 토픽과 메시지 형식을 프로젝트에 맞게 수정필요.
+    if (mqttClient) {
+      const topic = "your-topic"; // MQTT 토픽 수정
+      const message = isRecording ? "녹화 종료" : "녹화 시작"; // 메시지 형식 수정
+      mqttClient.publish(topic, message);
+    }
   };
 
   return (
