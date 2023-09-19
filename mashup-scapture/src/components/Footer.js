@@ -28,7 +28,7 @@ const RightContent = styled.div`
   align-items: flex-end;
 `;
 
-const Footer = () => {
+const footer = () => {
   return (
     <FooterContainer>
       <LeftContent>
@@ -44,4 +44,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default footer;

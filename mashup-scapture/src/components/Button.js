@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import { Link } from "react-router-dom";
 
 const StyledButton = styled.button`
@@ -39,12 +38,12 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button({ to, label }) {
-  return (
-    //<Link to={to}>
-      <StyledButton>{label}녹화하기</StyledButton>
-    //</Link>
-  );
+function Button({to, children}) {
+    return (
+      <Link to={to}>
+        <StyledButton>{children}</StyledButton>
+      </Link>
+    );
 }
 
 export default Button;

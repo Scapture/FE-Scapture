@@ -86,7 +86,7 @@ const SubContent2 = styled.div`
   font-weight: 400;
 `;
 
-function Header() {
+function Header({children}) {
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -107,8 +107,7 @@ function Header() {
       </HeaderContent>
       <ContentWrap>
         <MainContent>
-          LET'S
-          <br />
+        {children}<br/>
           SCAPTURE!
         </MainContent>
         <SubContent1>

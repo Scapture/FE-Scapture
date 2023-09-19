@@ -6,18 +6,17 @@ import Template from "../components/Template";
 import MoveComunity from "../components/MoveCommunity";
 import Footer from "../components/footer";
 
-function Mainpage() {
+
+function Recordingpage() {
   return (
     <>
       <Template>
-        <Header children={"LET'S "}/>
-        <Cardsection/>
+        <Header children={"DO "}/>
         <Moverecording/>
-        <MoveComunity/>
         <Footer/>
       </Template>
     </>
   );
 }
 
-export default Mainpage;
+export default Recordingpage;

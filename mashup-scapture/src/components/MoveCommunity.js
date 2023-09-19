@@ -109,7 +109,7 @@ function MoveCommunity() {
           <br /> 당신만의 운동 영상을 공유해보세요!
         </Titlesubcontent>
         <AppBlock>
-          <Button>공유하기</Button>
+          <Button to="/Recording" children="공유하기"></Button>
         </AppBlock>
       </ContentBlock>
       <ImgBlock>

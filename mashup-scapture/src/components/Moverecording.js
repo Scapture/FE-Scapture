@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom"; // 라우팅을 위해 react-router-dom에서 Link 컴포넌트를 가져옴
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -82,6 +83,12 @@ const Backgroundsubimg = styled.img`
 `;
 
 function Moverecording() {
+  const navigate = useNavigate();
+ 
+  const navigateToRecording = () => {
+    navigate("/Recording");
+  };
+
   return (
     <Container>
       <ContentBlock>
@@ -97,7 +104,7 @@ function Moverecording() {
           <br /> 당신만의 운동 영상을 녹화해보세요!
         </Titlesubcontent>
         <AppBlock>
-          <Button>녹화하기</Button>
+          <Button to="/Recording" children="녹화하기"></Button>
         </AppBlock>
       </ContentBlock>
       <ImgBlock>
