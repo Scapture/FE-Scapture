@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import { useNavigate } from "react-router-dom";
 
 const ColoredText = styled.span`
   color: #d6df22;
@@ -86,11 +85,6 @@ const Backgroundsubimg = styled.img`
 `;
 
 function Moverecording() {
-  const navigate = useNavigate();
- 
-  const navigateToRecording = () => {
-    navigate("/Recording");
-  };
 
   return (
     <Container>

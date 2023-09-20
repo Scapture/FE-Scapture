@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import Moverecording from "../components/Moverecording";
 import Template from "../components/Template";
 import Footer from "../components/footer";
 import Record from "../components/Record";

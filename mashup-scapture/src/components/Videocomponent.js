@@ -30,23 +30,27 @@ const VideoGridView = () => {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
-    // 백엔드 API 호출
-    axios.get('/api/videos')
-      .then((response) => {
-        setVideoData(response.data);
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/list'); // API 엔드포인트 수정
+        const videoList = response.data; // JSON 데이터 받아옴
+        setVideoData(videoList);
+        console.log(response.data);
+      } catch (error) {
         console.error('영상 데이터를 불러오는 중에 오류가 발생했습니다:', error);
-      });
+      }
+    };
+
+    fetchData(); // async 함수를 호출
   }, []);
 
   return (
     <VideoGrid>
       {videoData.map((video) => (
         <VideoCard key={video.id}>
-          <Video src={video.url} controls />
-          <VideoLink href={video.url} target="_blank" rel="noopener noreferrer">
-            {video.title}
+          <Video src={video.video_url} controls />
+          <VideoLink href={video.video_url} target="_blank" rel="noopener noreferrer">
+            {video.id}
           </VideoLink>
         </VideoCard>
       ))}
@@ -55,4 +59,3 @@ const VideoGridView = () => {
 };
 
 export default VideoGridView;
-
