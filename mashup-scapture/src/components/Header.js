@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // 스타일드 컴포넌트를 사용하여 Header 스타일링
 const NavLink = styled.div`
@@ -71,7 +72,7 @@ const Navigation = styled.nav`
 `;
 
 const ContentWrap = styled.div`
-  margin-top:5rem;
+  margin-top: 5rem;
   margin-left: 18.4vw;
   margin-bottom: 10vw;
 `;
@@ -161,19 +162,21 @@ function Header({ children }) {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                className={`nav-link ${isHovered["녹화"] ? "hovered" : ""}`}
-                to="/about"
-                onMouseOver={() => handleMouseOver("녹화")}
-                onMouseOut={() => handleMouseOut("녹화")}
-              >
-                {text["녹화"]}
-              </NavLink>
+              <Link to="/Recording">
+                <NavLink
+                  className={`nav-link ${isHovered["녹화"] ? "hovered" : ""}`}
+                  to="/Recording"
+                  onMouseOver={() => handleMouseOver("녹화")}
+                  onMouseOut={() => handleMouseOut("녹화")}
+                >
+                  {text["녹화"]}
+                </NavLink>
+              </Link>
             </li>
             <li>
               <NavLink
                 className={`nav-link ${isHovered["커뮤니티"] ? "hovered" : ""}`}
-                to="/contact"
+                to="/"
                 onMouseOver={() => handleMouseOver("커뮤니티")}
                 onMouseOut={() => handleMouseOut("커뮤니티")}
               >
