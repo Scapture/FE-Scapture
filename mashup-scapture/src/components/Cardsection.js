@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useRef, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
 
 const backgroundImageUrl = "/assets/scapture-bg-logo.svg";
 
@@ -25,7 +25,8 @@ const MainContent = styled.div`
 
 const MainContentWriting = styled.p`
   margin-left: 18.4vw;
-  padding-top: 10vmin;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
   color: var(--1, #f2f6ff);
   font-family: Pretendard;
   font-size: 2.5vw;
@@ -34,8 +35,22 @@ const MainContentWriting = styled.p`
   margin-bottom: 0;
 `;
 
+// 스프링 모션을 위한 keyframes 정의
+const springAnimation = keyframes`
+  0% {
+    transform: translateY(-20px); /* 시작 위치 조정 */
+    opacity: 0; /* 시작 시 투명도 0 */
+  }
+  100% {
+    transform: translateY(0); /* 스프링 모션 종료 위치 */
+    opacity: 1; /* 끝날 때 투명도 1 */
+  }
+`;
+
 const CardContent = styled.div`
   opacity: 0.9;
+  animation: ${springAnimation} 2s; /* 2초 동안 스프링 모션 애니메이션 실행 */
+  /* 나머지 스타일은 그대로 유지 */
 `;
 
 const LineContent = styled.div`

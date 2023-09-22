@@ -3,23 +3,26 @@ import styled from "styled-components";
 
 // 스타일드 컴포넌트를 사용하여 Header 스타일링
 const NavLink = styled.div`
-  color: ${props => props.isHovered ? 'yellow' : '#eee'};
+  color: ${(props) => (props.isHovered ? "yellow" : "#eee")};
   transition: color 0.8s;
-
   &:hover {
     color: yellow;
     cursor: pointer;
   }
 `;
 
-
 const ColoredText = styled.span`
   color: #d6df22;
 `;
 
 const HeaderContainer = styled.div`
+  background-size: 110vw;
   color: white;
-  padding-bottom: 13vmax;
+  background-repeat: no-repeat;
+  background-color: #000;
+  background-attachment: fixed;
+  background-image: url("/assets/scapture-main-bg.png");
+  overflow: hidden; /* 내용이 화면을 넘어갈 경우 숨김 */
 `;
 
 const HeaderContent = styled.div`
@@ -68,8 +71,9 @@ const Navigation = styled.nav`
 `;
 
 const ContentWrap = styled.div`
-  margin-top: 13vh;
+  margin-top:5rem;
   margin-left: 18.4vw;
+  margin-bottom: 10vw;
 `;
 
 const MainContent = styled.div`
@@ -84,7 +88,6 @@ const MainContent = styled.div`
 
 const SubContent1 = styled.div`
   margin-top: 3vh;
-
   color: var(--1, #f2f6ff);
   font-family: Pretendard;
   font-size: 1.8vw;
@@ -94,7 +97,6 @@ const SubContent1 = styled.div`
 
 const SubContent2 = styled.div`
   margin-top: 2vh;
-
   color: var(--1, #f2f6ff);
   font-family: Pretendard;
   font-size: 0.8vw;

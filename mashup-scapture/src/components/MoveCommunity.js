@@ -4,7 +4,6 @@ import Button from "./Button";
 
 const ColoredText = styled.span`
   color: #2458EA;
-
 `;
 
 const Container = styled.div`
