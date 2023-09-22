@@ -3,14 +3,15 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const VideoGrid = styled.div`
+  background-color: #ccc;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3열로 나열 */
   gap: 16px; /* 영상 간격 조절 */
 `;
 
 const VideoCard = styled.div`
-  padding: 16px;
-  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border: 0.5px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
