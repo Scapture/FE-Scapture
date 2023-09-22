@@ -26,7 +26,7 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderContent = styled.div`
-  padding-top: 3vh;
+  padding-top: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;

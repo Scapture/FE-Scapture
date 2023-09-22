@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const StyledButton = styled.button`
   /* 공통 스타일 */
@@ -38,12 +38,20 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button({to, children}) {
-    return (
-      <Link to={to}>
-        <StyledButton>{children}</StyledButton>
-      </Link>
-    );
+function Button({ to, children }) {
+  // 현재 페이지의 위치를 가져옵니다.
+  const location = useLocation();
+
+  // 페이지가 로드될 때 스크롤을 맨 위로 이동시킵니다.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return (
+    <Link to={to}>
+      <StyledButton>{children}</StyledButton>
+    </Link>
+  );
 }
 
 export default Button;

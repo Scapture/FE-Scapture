@@ -49,7 +49,11 @@ const springAnimation = keyframes`
 const CardContent = styled.div`
   opacity: 0.9;
   animation: ${(props) =>
-    props.animated ? css`${springAnimation} 2s` : "none"};
+    props.animated
+      ? css`
+          ${springAnimation} 2s
+        `
+      : "none"};
 `;
 
 const LineContent = styled.div`
