@@ -3,15 +3,14 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const VideoGrid = styled.div`
-  background-color: #ccc;
+  background-color: #000000;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3열로 나열 */
-  gap: 16px; /* 영상 간격 조절 */
+  gap: 8px; /* 영상 간격 조절 */
 `;
 
 const VideoCard = styled.div`
   padding: 0.5rem;
-  border: 0.5px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -24,7 +23,7 @@ const Video = styled.video`
 
 const VideoLink = styled.a`
   text-decoration: none;
-  color: #333;
+  color: #eee;
 `;
 
 const VideoGridView = () => {
@@ -33,7 +32,7 @@ const VideoGridView = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/list'); // API 엔드포인트 수정
+        const response = await axios.get('/list/'); // API 엔드포인트 수정
         const videoList = response.data; // JSON 데이터 받아옴
         setVideoData(videoList);
         console.log(response.data);
@@ -49,8 +48,8 @@ const VideoGridView = () => {
     <VideoGrid>
       {videoData.map((video) => (
         <VideoCard key={video.id}>
-          <Video src={video.video_url} controls />
-          <VideoLink href={video.video_url} target="_blank" rel="noopener noreferrer">
+          <Video src={video.video} controls />
+          <VideoLink href={video.video} target="_blank" rel="noopener noreferrer">
             {video.id}
           </VideoLink>
         </VideoCard>
