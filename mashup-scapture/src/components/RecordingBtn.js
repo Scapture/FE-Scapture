@@ -48,7 +48,7 @@ class RecordingBtn extends Component {
     };
 
     // MQTT 브로커 URL 및 포트 번호, 토픽 설정
-    this.brokerUrl = "192.168.1.11"; // MQTT 브로커 주소
+    this.brokerUrl = "223.194.134.32"; // MQTT 브로커 주소
     this.topic = "record"; // MQTT 토픽 수정
     this.Subtopic = "post";
     this.port = 9001; // MQTT 브로커의 포트 번호
@@ -73,7 +73,10 @@ class RecordingBtn extends Component {
   // MQTT 메시지 수신 시 실행되는 콜백
   onMessage = (message) => {
     console.log(`Received message: ${message.payloadString}`);
-    // Subscribe한 메시지 처리 로직을 여기에 추가
+    const { onMessageReceived } = this.props;
+    if (onMessageReceived) {
+      onMessageReceived(message.payloadString);
+    }
   };
 
   // MQTT 연결 끊김 시 실행되는 콜백

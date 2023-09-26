@@ -32,7 +32,7 @@ const VideoGridView = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/list/'); // API 엔드포인트 수정
+        const response = await axios.get('/list'); // API 엔드포인트 수정
         const videoList = response.data; // JSON 데이터 받아옴
         setVideoData(videoList);
         console.log(response.data);
