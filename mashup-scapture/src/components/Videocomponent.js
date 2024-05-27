@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { getList } from '../apis/api/video';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { getList } from "../apis/api/video";
 
 const VideoGrid = styled.div`
   background-color: #000000;
@@ -11,10 +11,12 @@ const VideoGrid = styled.div`
 `;
 
 const VideoCard = styled.div`
+  position: relative;
   padding: 0.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  cursor: pointer;
 `;
 
 const Video = styled.video`
@@ -22,19 +24,25 @@ const Video = styled.video`
   height: auto;
 `;
 
-const VideoLink = styled.a`
-  text-decoration: none;
-  color: #eee;
+const VideoInfo = styled.div`
+  bottom: 0;
+  left: 0;
+  width: 95%;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
 `;
 
 const Modal = styled.div`
-  display: ${({ open }) => (open ? 'block' : 'none')};
+  display: ${({ open }) => (open ? "block" : "none")};
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* 검정 바탕 색상 */
+  z-index: 999; /* 최상위로 이동 */
 `;
 
 const ModalContent = styled.div`
@@ -42,10 +50,12 @@ const ModalContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff; /* 모달 내부 색상 */
+  background-color: black; /* 모달 내부 색상 */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  writing-mode: horizontal-tb;
+  color: #fff;
 `;
 
 const ModalCloseButton = styled.span`
@@ -54,6 +64,20 @@ const ModalCloseButton = styled.span`
   right: 10px;
   cursor: pointer;
 `;
+
+const VideoTitle = styled.p`
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;`;
 
 const VideoGridView = () => {
   const [videoData, setVideoData] = useState([]);
@@ -64,16 +88,14 @@ const VideoGridView = () => {
       try {
         const response = await getList();
 
-        if(response.status === 200){
-          
+        if (response.status === 200) {
           setVideoData(response.data.data);
-          // const videoList = response.data.url; // JSON 데이터
-          // setVideoData(videoList);
-          console.log(response.data);
         }
-      
       } catch (error) {
-        console.error('영상 데이터를 불러오는 중에 오류가 발생했습니다:', error);
+        console.error(
+          "영상 데이터를 불러오는 중에 오류가 발생했습니다:",
+          error
+        );
       }
     };
 
@@ -94,9 +116,18 @@ const VideoGridView = () => {
         {videoData.map((video) => (
           <VideoCard key={video.id} onClick={() => openModal(video)}>
             <Video src={video.url} controls />
-            <VideoLink href={video.video} target="_blank" rel="noopener noreferrer">
-              {video.id}
-            </VideoLink>
+            <VideoInfo>
+              <div style={{display:"flex", justifyContent:"space-between", alignItems:'center'}}>
+                <div>
+                  <VideoTitle>{video.title}</VideoTitle>
+                  <span style={{ marginBottom: "0.5rem", fontSize: "0.8rem" }}>
+                    {video.place}
+                  </span>
+                </div>
+                <div style={{ fontSize: "0.6rem" }}>{video.createdAt}
+                </div>
+              </div>
+            </VideoInfo>
           </VideoCard>
         ))}
       </VideoGrid>
@@ -104,7 +135,16 @@ const VideoGridView = () => {
         <ModalContent onClick={(e) => e.stopPropagation()}>
           <ModalCloseButton onClick={closeModal}>X</ModalCloseButton>
           {selectedVideo && (
-            <Video src={selectedVideo.url} controls />
+            <>
+              <Video src={selectedVideo.url} controls />
+              <Container>
+                <div>
+              <p>{selectedVideo.title}</p>
+              <p>{selectedVideo.place}</p>
+              </div>
+              <p>{selectedVideo.createdAt}</p>
+              </Container>
+            </>
           )}
         </ModalContent>
       </Modal>

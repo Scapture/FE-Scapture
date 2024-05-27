@@ -12,6 +12,7 @@ function Recordingpage() {
       <Template>
         <Header children={"DO "}/>
         <Record/>
+        
         <VideoGridView/>
         <Footer/>
       </Template>
